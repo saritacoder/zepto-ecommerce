@@ -35,6 +35,7 @@ const AdminLogin = () => {
         uid: userCredential.user.uid,
         email: userCredential.user.email,
         role: "admin",
+        
       })
 
       navigate("/admin")
