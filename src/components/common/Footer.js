@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FiHome, FiShoppingBag, FiUser, FiMail, FiPhone, FiMapPin } from "react-icons/fi"
 
-export default function Footer() {
+  function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -153,3 +153,4 @@ export default function Footer() {
   )
 }
 
+export default Footer
