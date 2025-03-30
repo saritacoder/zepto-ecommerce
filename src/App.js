@@ -168,6 +168,8 @@ import OrderConfirmation from "./pages/OrderConfirmation";
 import UserProfile from "./pages/user/UserProfile";
 import AddProduct from "./pages/admin/AddProduct";
 import ManageProducts from "./pages/admin/ManageProducts";
+// import EditProduct from "./pages/admin/EditProduct";
+import EditProduct from "./pages/admin/EditProduct";
 import ManageCategories from "./pages/admin/ManageCategories";
 import ManageOrders from "./pages/admin/ManageOrders";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -257,6 +259,21 @@ function App() {
                 </AdminRoute>
               }
             />
+
+{/* <Route
+  path="/admin/edit-product/:id"
+  element={
+    <AdminRoute>
+      <EditProduct />
+    </AdminRoute>
+  }
+/> */}
+
+<Route>
+<Route path="/admin/add-product" element={ <AdminRoute><EditProduct /></AdminRoute>} />
+</Route>
+
+<Route path="/admin/edit-product/:id" element={<EditProduct />} />
             <Route
               path="/admin/manage-orders"
               element={
