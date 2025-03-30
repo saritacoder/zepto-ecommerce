@@ -55,7 +55,8 @@ const AdminSignUp = () => {
         role: "admin",
       })
 
-      navigate("/admin")
+      // navigate("/admin")
+      navigate("/admin/login")
     } catch (error) {
       setError("Failed to create an account. " + error.message)
       console.error(error)

@@ -38,7 +38,7 @@ const AdminLogin = () => {
         
       })
 
-      navigate("/admin")
+      navigate("/admin-dashboard")
     } catch (error) {
       setError("Failed to sign in. Please check your credentials or admin status.")
       console.error(error)

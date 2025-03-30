@@ -226,7 +226,7 @@ function App() {
             
             {/* Admin Routes (Without Layout) */}
             <Route
-              path="/admin"
+              path="/admin-dashboard"
               element={
                 <AdminRoute>
                   <AdminDashboard />
