@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { collection, getDocs, doc, deleteDoc, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { Package, Plus, Edit, Trash2, Search, ArrowLeft } from "lucide-react";
+import Footer from "../../components/common/Footer";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
@@ -15,6 +16,7 @@ const ManageProducts = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 5;
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,10 +86,10 @@ const ManageProducts = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
+      <header className="bg-gray-300 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
-            <Link to="/admin/dashboard" className="flex items-center text-gray-700 hover:text-purple-700 mr-4">
+            <Link to="/admin-dashboard" className="flex items-center text-gray-700 hover:text-purple-700 mr-4">
               <ArrowLeft className="h-5 w-5 mr-2" />
             </Link>
             <h1 className="text-lg font-medium text-gray-900">Manage Products</h1>
@@ -165,7 +167,7 @@ const ManageProducts = () => {
                           <div className="text-sm font-medium text-gray-900">{product.name}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-500">{categories[product.categoryId] || "Unknown"}</div>
+                          <div className="text-sm text-gray-900">{categories[product.categoryId] || "Unknown"}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">₹{product.price}</div>
@@ -229,6 +231,7 @@ const ManageProducts = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

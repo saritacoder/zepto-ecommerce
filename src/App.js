@@ -178,6 +178,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
+import ManageUsers from "./pages/admin/ManageUsers";
 
 function App() {
   return (
@@ -243,6 +244,17 @@ function App() {
                 </AdminRoute>
               }
             />
+
+<Route
+              path="/admin/manage-users"
+              element={
+                <AdminRoute>     <ManageUsers /></AdminRoute>
+             
+                
+              }
+            />
+
+
             <Route
               path="/admin/manage-products"
               element={

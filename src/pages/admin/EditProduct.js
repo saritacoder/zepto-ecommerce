@@ -118,9 +118,11 @@ const EditProduct = () => {
   const selectedCategoryName = categories.find(cat => cat.id === selectedCategory)?.name || '';
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+    <div className="min-h-screen bg-gray-400 py-8">
+    {/* // <div className="min-h-screen bg-gradient-to-r from-blue-100 to-purple-200 py-8"> */}
+      <div className="max-w-2xl mx-auto bg-black rounded-lg shadow-md p-6">
+      {/* <div className="max-w-2xl mx-auto bg-gray rounded-lg shadow-md p-6"> */}
+        <h2 className="text-2xl font-bold text-white mb-6">
           {isEditMode ? "Edit Product" : "Add Product"}
         </h2>
 
@@ -133,7 +135,7 @@ const EditProduct = () => {
         {!initialLoading && (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1">
                 Product Name
               </label>
               <input
@@ -148,7 +150,7 @@ const EditProduct = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1">
                 Description
               </label>
               <textarea
@@ -164,7 +166,7 @@ const EditProduct = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-white mb-1">
                   Price (₹)
                 </label>
                 <input
@@ -181,7 +183,7 @@ const EditProduct = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-white mb-1">
                   Stock
                 </label>
                 <input
@@ -198,7 +200,7 @@ const EditProduct = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1">
                 Category
               </label>
               <select
@@ -222,7 +224,7 @@ const EditProduct = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-white mb-1">
                 Product Image
               </label>
               <input
