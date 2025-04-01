@@ -1,187 +1,155 @@
-"use client";
+import { Link } from "react-router-dom";
+import { User } from "lucide-react";
+import { useCart } from "../../contexts/CartContext";
+import { useState } from "react";
+// import CartIcon from "../../assets/cart-icon.svg"; // Ensure this points to the correct cart icon
+// import CartIcon from "./..assets/CartIcon.png"
+import img from "../../assets/img.png"
 
-import { useNavigate } from "react-router-dom";
-import { FiMenu, FiBell, FiUser, FiLogOut } from "react-icons/fi";
+const Header = ({ handleLogout }) => {
+  const { getCartItemsCount } = useCart();
+  const [searchQuery, setSearchQuery] = useState("");
 
-function Header({ title }) {
-  const navigate = useNavigate(); // Use React Router for navigation
-
-  // Function to handle logout
-  const handleLogout = () => {
-    localStorage.removeItem("authToken"); // Clear authentication token
-    navigate("/"); // Redirect to login page
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    // Implement search functionality here
   };
 
   return (
-    <header className="bg-white shadow-sm z-10">
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <button
-              type="button"
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-            >
-              <FiMenu className="block h-6 w-6" />
-            </button>
-            <div className="flex-shrink-0 flex items-center">
-              <h1 className="text-xl font-bold text-gray-800">{title}</h1>
-            </div>
-          </div>
+    <header className="bg-white shadow-sm">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <Link to="/user" className="flex items-center">
+          <h1 className="text-2xl font-bold text-indigo-600">QuickMart</h1>
+        </Link>
 
-          <div className="flex items-center space-x-4">
-            {/* Notifications */}
-            <button
-              type="button"
-              className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              <FiBell className="h-6 w-6" />
-            </button>
+        {/* <div className="flex items-center space-x-4">
+        
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={handleSearch}
+            className="px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          /> */}
 
-            {/* Profile Icon (Redirects to Profile Page) */}
-            <button
-              type="button"
-              className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              onClick={() => navigate("/profile")} // Use navigate instead of router.push
-            >
-              <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <FiUser className="h-5 w-5 text-gray-500" />
+
+
+<div className="flex items-center space-x-4">
+  {/* Search Bar */}
+  <input
+    type="text"
+    placeholder="Search..."
+    value={searchQuery}
+    onChange={handleSearch}
+    className="px-4 py-2 border border-blue-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+  />
+
+
+
+          {/* Cart Icon with Badge */}
+          <Link to="/cart" className="relative">
+            <img src={img} alt="Cart" className="h-6 w-6 text-gray-600" />
+            <span className="absolute -top-2 -right-3 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {getCartItemsCount()}
+            </span>
+          </Link>
+
+          {/* User Profile */}
+          <div className="relative group">
+            <button className="flex items-center space-x-1">
+              <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
+                <User className="h-5 w-5 text-indigo-600" />
               </div>
             </button>
 
-            {/* Logout Button */}
-            <button
-              type="button"
-              className="flex items-center text-sm text-gray-700 hover:text-red-600 focus:outline-none"
-              onClick={handleLogout}
-            >
-              <FiLogOut className="h-5 w-5 mr-1" />
-              <span>Logout</span>
-            </button>
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+              <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                Profile
+              </Link>
+              <Link to="/orders" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                Orders
+              </Link>
+              <Link to="/addresses" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                Addresses
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Sign Out
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </header>
   );
-}
+};
 
 export default Header;
 
 
 
 
+// import { Link } from "react-router-dom";
+// import { ShoppingBag, User } from "lucide-react";
+// import { useCart } from "../../contexts/CartContext";
 
-
-
-
-
-// "use client"
-
-// import { useState } from "react"
-// import { FiMenu, FiBell, FiUser } from "react-icons/fi"
-// // import { useAuth } from "../../hooks/useAuth"
-
-// function Header({ title }) {
-//   // const { user } = useAuth()
-//   const [showProfileMenu, setShowProfileMenu] = useState(false)
-//   const [showMobileMenu, setShowMobileMenu] = useState(false)
+// const Header = ({ handleLogout }) => {
+//   const { getCartItemsCount } = useCart(); // ✅ Extract from context
 
 //   return (
-//     <header className="bg-white shadow-sm z-10">
-//       <div className="px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between h-16">
-//           <div className="flex">
-//             <button
-//               type="button"
-//               className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-//               onClick={() => setShowMobileMenu(!showMobileMenu)}
-//             >
-//               <span className="sr-only">Open main menu</span>
-//               <FiMenu className="block h-6 w-6" />
-//             </button>
-//             <div className="flex-shrink-0 flex items-center">
-//               <h1 className="text-xl font-bold text-gray-800">{title}</h1>
-//             </div>
-//           </div>
-//           <div className="flex items-center">
-//             <button
-//               type="button"
-//               className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-//             >
-//               <span className="sr-only">View notifications</span>
-//               <FiBell className="h-6 w-6" />
-//             </button>
+//     <header className="bg-white shadow-sm">
+//       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+//         <Link to="/user" className="flex items-center">
+//           <h1 className="text-2xl font-bold text-indigo-600">QuickMart</h1>
+//         </Link>
 
-//             {/* Profile dropdown */}
-//             <div className="ml-3 relative">
-//               <div>
-//                 <button
-//                   type="button"
-//                   className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-//                   id="user-menu"
-//                   aria-expanded="false"
-//                   aria-haspopup="true"
-//                   onClick={() => setShowProfileMenu(!showProfileMenu)}
-//                 >
-//                   <span className="sr-only">Open user menu</span>
-//                   <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
-//                     <FiUser className="h-5 w-5 text-gray-500" />
-//                   </div>
-//                 </button>
+//         <div className="flex items-center space-x-4">
+//           <Link to="/cart" className="relative">
+//             <ShoppingBag className="h-6 w-6 text-gray-600" />
+//             <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+//               {getCartItemsCount()} {/* ✅ Use function from context */}
+//             </span>
+//           </Link>
+
+//           <div className="relative group">
+//             <button className="flex items-center space-x-1">
+//               <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
+//                 <User className="h-5 w-5 text-indigo-600" />
+              
 //               </div>
+//             </button>
 
-//               {showProfileMenu && (
-//                 <div
-//                   className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-//                   role="menu"
-//                   aria-orientation="vertical"
-//                   aria-labelledby="user-menu"
-//                 >
-//                   <div className="block px-4 py-2 text-sm text-gray-700">{user?.email}</div>
-//                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-//                     Your Profile
-//                   </a>
-//                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-//                     Settings
-//                   </a>
-//                 </div>
-//               )}
+//             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+//               <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+//                 Profile
+//               </Link>
+//               <Link to="/orders" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+//                 Orders
+//               </Link>
+//               <Link to="/addresses" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+//                 Addresses
+//               </Link>
+//               <button
+//                 onClick={handleLogout}
+//                 className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+//               >
+//                 Sign Out
+//               </button>
 //             </div>
 //           </div>
 //         </div>
 //       </div>
-
-//       {/* Mobile menu */}
-//       {showMobileMenu && (
-//         <div className="md:hidden">
-//           <div className="pt-2 pb-3 space-y-1">
-//             <a
-//               href="/"
-//               className="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-//             >
-//               Dashboard
-//             </a>
-//             <a
-//               href="/products"
-//               className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-//             >
-//               Products
-//             </a>
-//             <a
-//               href="/categories"
-//               className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-//             >
-//               Categories
-//             </a>
-//             <a
-//               href="/orders"
-//               className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-//             >
-//               Orders
-//             </a>
-//           </div>
-//         </div>
-//       )}
 //     </header>
-//   )
-// }
-// export default Header
+//   );
+// };
+
+// export default Header;
+
+
+
+
+
+
+

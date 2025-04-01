@@ -10,7 +10,7 @@ import { FiHome, FiShoppingBag, FiUser, FiMail, FiPhone, FiMapPin } from "react-
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-lg font-bold mb-4">SwiftMart</h3>
+            <h3 className="text-lg font-bold mb-4">QuickMart</h3>
             <p className="text-gray-300 text-sm mb-4">
               Your one-stop shop for all your shopping needs. Fast delivery, great prices, and excellent customer
               service.

@@ -145,7 +145,7 @@ const ProductDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
+      {/* <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/user" className="flex items-center">
             <h1 className="text-2xl font-bold text-indigo-600">QuickMart</h1>
@@ -183,7 +183,7 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main className="container mx-auto px-4 py-8">
         <div className="mb-4">
