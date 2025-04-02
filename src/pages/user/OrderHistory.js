@@ -1,15 +1,13 @@
 
 
 
-//  below code me issue h ki jab order histoyr pe click karte h to not found show karta h
-
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, query, where, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { useAuth } from '../../contexts/AuthContext';
-import { FiPackage, FiChevronRight } from 'react-icons/fi';
+import { FiPackage, FiChevronRight, FiArrowLeft } from 'react-icons/fi';
 
 export default function OrderHistory() {
   const { currentUser } = useAuth();
@@ -21,11 +19,6 @@ export default function OrderHistory() {
       if (!currentUser) return;
 
       try {
-        // console.log("Current User ID:", currentUser.uid);
-        // console.log("Order Items:", orders.items);
-        console.log("Fetched Orders:", orders);
-        
-
         const ordersQuery = query(
           collection(db, 'orders'),
           where('userId', '==', currentUser.uid),
@@ -35,8 +28,6 @@ export default function OrderHistory() {
         const ordersSnapshot = await getDocs(ordersQuery);
         const ordersList = ordersSnapshot.docs.map(doc => {
           const data = doc.data();
-
-          console.log("Order Data:", data);
           return {
             id: doc.id,
             ...data,
@@ -54,9 +45,6 @@ export default function OrderHistory() {
       }
     };
 
-
-
-    
     fetchOrders();
   }, [currentUser]);
 
@@ -78,10 +66,16 @@ export default function OrderHistory() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="bg-gray-600 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Order History</h1>
-        <p className="mt-2 text-sm text-gray-500">
+        <div className="flex items-center">
+          {/* Left Arrow Icon that redirects to user-dashboard */}
+          <Link to="/user-dashboard" className="mr-2">
+            <FiArrowLeft className="h-6 w-6 text-white cursor-pointer" />
+          </Link>
+          <h1 className="text-2xl font-bold text-white">Order History</h1>
+        </div>
+        <p className="mt-2 text-sm text-white-500">
           View and track all your past orders
         </p>
       </div>
@@ -148,9 +142,7 @@ export default function OrderHistory() {
                       </div>
                       <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
                         <p>
-                          {/* Total: ₹{order.totalAmount?.toFixed(2) || '0.00'} */}
                           Total: ₹{(order.totalAmount ?? order.items?.reduce((sum, item) => sum + (item.price * item.quantity), 0))?.toFixed(2)}
-
                         </p>
                       </div>
                     </div>
@@ -184,99 +176,3 @@ export default function OrderHistory() {
 
 
 
-
-// import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-// import { collection, query, where, orderBy, getDocs } from 'firebase/firestore';
-// import { db } from '../../firebase/config';
-// import { useAuth } from '../../contexts/AuthContext';
-// import { FiPackage, FiChevronRight } from 'react-icons/fi';
-
-// export default function OrderHistory() {
-//   const { currentUser } = useAuth();
-//   const [orders, setOrders] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const fetchOrders = async () => {
-//       if (!currentUser) return;
-
-//       setLoading(true); // Ensure loading state is set correctly
-
-//       try {
-//         console.log("Fetching orders for user:", currentUser.uid);
-
-//         const ordersQuery = query(
-//           collection(db, 'orders'),
-//           where('userId', '==', currentUser.uid),
-//           orderBy('createdAt', 'desc')
-//         );
-
-//         const ordersSnapshot = await getDocs(ordersQuery);
-//         const ordersList = ordersSnapshot.docs.map(doc => {
-//           const data = doc.data();
-//           return {
-//             id: doc.id,
-//             ...data,
-//             createdAt: data.createdAt?.seconds
-//               ? new Date(data.createdAt.seconds * 1000) // Firestore Timestamp
-//               : new Date(data.createdAt) // Normal Date
-//           };
-//         });
-
-//         console.log("Fetched Orders:", ordersList);
-//         setOrders(ordersList);
-//       } catch (error) {
-//         console.error('Error fetching orders:', error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchOrders();
-//   }, [currentUser]); // Ensure this runs when currentUser changes
-
-//   return (
-//     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-//       <h1 className="text-2xl font-bold text-gray-900">Order History</h1>
-
-//       {loading ? (
-//         <div className="flex justify-center items-center h-64">
-//           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-//         </div>
-//       ) : orders.length > 0 ? (
-//         <div className="bg-white shadow overflow-hidden sm:rounded-md">
-//           <ul className="divide-y divide-gray-200">
-//             {orders.map(order => (
-//               <li key={order.id}>
-//                 <Link to={`/order/${order.id}`} className="block hover:bg-gray-50">
-//                   <div className="px-4 py-4 sm:px-6">
-//                     <div className="flex items-center justify-between">
-//                       <div className="flex items-center">
-//                         <FiPackage className="h-6 w-6 text-gray-400" />
-//                         <div className="ml-4">
-//                           <p className="text-sm font-medium text-blue-600">
-//                             Order #{order.id.slice(0, 8)}
-//                           </p>
-//                           <p className="text-sm text-gray-500">
-//                             {order.createdAt ? order.createdAt.toLocaleDateString() : 'N/A'}
-//                           </p>
-//                         </div>
-//                       </div>
-//                       <FiChevronRight className="ml-2 h-5 w-5 text-gray-400" />
-//                     </div>
-//                   </div>
-//                 </Link>
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       ) : (
-//         <div className="bg-white shadow overflow-hidden sm:rounded-md p-6 text-center">
-//           <FiPackage className="mx-auto h-12 w-12 text-gray-400" />
-//           <h3 className="mt-2 text-sm font-medium text-gray-900">No orders yet</h3>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }

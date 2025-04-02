@@ -29,7 +29,7 @@ const UserLogin = () => {
         role: "user",
       })
 
-      navigate("/user")
+      navigate("/user-dashboard")
     } catch (error) {
       setError("Failed to sign in. Please check your credentials.")
       console.error(error)

@@ -90,7 +90,7 @@ const Cart = () => {
       <main className="container mx-auto px-4 py-8">
         <div className="mb-4">
           <Link 
-            to="/products" 
+            to="/user-dashboard" 
             className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
           >
             <ChevronLeft className="h-4 w-4 mr-1" />
@@ -194,7 +194,7 @@ const Cart = () => {
                   Clear Cart
                 </button>
                 <Link
-                  to="/products"
+                  to="/user-dashboard"
                   className="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
                 >
                   Continue Shopping
