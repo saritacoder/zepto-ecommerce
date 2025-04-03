@@ -51,7 +51,7 @@ const UserSignUp = () => {
         role: "user",
       })
 
-      navigate("/user")
+      navigate("/user/login")
     } catch (error) {
       setError("Failed to create an account. " + error.message)
       console.error(error)

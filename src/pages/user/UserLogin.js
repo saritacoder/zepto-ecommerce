@@ -2,9 +2,10 @@
 
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../../firebase/config"
 import { useAuth } from "../../contexts/AuthContext"
+import { setPersistence, browserLocalPersistence, signInWithEmailAndPassword } from "firebase/auth";
+
 
 const UserLogin = () => {
   const emailRef = useRef()
@@ -15,28 +16,30 @@ const UserLogin = () => {
   const { setCurrentUser } = useAuth()
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
+    e.preventDefault();
     try {
-      setError("")
-      setLoading(true)
-
-      const userCredential = await signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-
+      setError("");
+      setLoading(true);
+  
+      // Ensure persistence before signing in
+      await setPersistence(auth, browserLocalPersistence);
+  
+      const userCredential = await signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
+      
       setCurrentUser({
         uid: userCredential.user.uid,
         email: userCredential.user.email,
         role: "user",
-      })
-
-      navigate("/user-dashboard")
+      });
+  
+      navigate("/user-dashboard");
     } catch (error) {
-      setError("Failed to sign in. Please check your credentials.")
-      console.error(error)
+      setError("Failed to sign in. Please check your credentials.");
+      console.error(error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

@@ -1,11 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import { updateEmail, updatePassword } from "firebase/auth"
 import { db } from "../../firebase/config"
 import { useAuth } from "../../contexts/AuthContext"
-import { FiUser, FiMapPin, FiLock, FiSave } from "react-icons/fi"
+import { FiUser, FiMapPin, FiLock, FiSave,FiArrowLeft } from "react-icons/fi"
 
 export default function UserProfile() {
   const { currentUser } = useAuth()
@@ -278,9 +279,15 @@ export default function UserProfile() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
+      <div className="flex items-center">
+      <Link to="/user-dashboard" className="mr-2">
+            <FiArrowLeft className="h-6 w-6 text-black cursor-pointer" />
+          </Link>
         <h1 className="text-2xl font-bold text-gray-900">My Account</h1>
+        </div>
         <p className="mt-2 text-sm text-gray-500">Manage your account information and addresses</p>
       </div>
+      
 
       {successMessage && (
         <div className="mb-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded relative">
@@ -319,7 +326,7 @@ export default function UserProfile() {
               <FiMapPin className="inline-block mr-2 h-5 w-5" />
               Addresses
             </button>
-            <button
+            {/* <button
               onClick={() => setActiveTab("security")}
               className={`whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm ${
                 activeTab === "security"
@@ -328,8 +335,8 @@ export default function UserProfile() {
               }`}
             >
               <FiLock className="inline-block mr-2 h-5 w-5" />
-              Security
-            </button>
+              { Security }
+            </button> */}
           </nav>
         </div>
 

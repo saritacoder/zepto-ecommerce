@@ -144,7 +144,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-r from-purple-50 to-purple-500">
      
 
       <main className="container mx-auto px-4 py-8">
@@ -248,7 +248,8 @@ const ProductDetails = () => {
         </div>
         
         {relatedProducts.length > 0 && (
-          <div className="mt-12">
+          // <div className="mt-12">
+          <div className="bg-gradient-to-r from-white to-purple-500 shadow-md">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Related Products</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedProducts.map(relatedProduct => (

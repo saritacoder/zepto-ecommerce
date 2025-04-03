@@ -153,7 +153,12 @@ export function CartProvider({ children }) {
     }
     
     try {
-      setCart(prevCart => prevCart.filter(item => item.id !== productId));
+      // setCart(prevCart => prevCart.filter(item => item.id !== productId));
+      setCart(prevCart => {
+        const updatedCart = prevCart.filter(item => item.id !== productId);
+        localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
+        return updatedCart;
+    });
     } catch (error) {
       console.error("Error removing from cart:", error);
       toast.error("Failed to remove item from cart");
@@ -185,7 +190,8 @@ export function CartProvider({ children }) {
 
   const clearCart = () => {
     try {
-      setCart([]);
+      setCart([]); 
+      localStorage.removeItem("cart");
     } catch (error) {
       console.error("Error clearing cart:", error);
       toast.error("Failed to clear cart");
