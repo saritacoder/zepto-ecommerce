@@ -1,5 +1,4 @@
 
-
 "use client"
 
 import { useState, useEffect } from "react"
@@ -137,7 +136,7 @@ const ProductListing = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       {/* Header commented out in original code */}
 
       <main className="container mx-auto px-4 py-8">
@@ -193,7 +192,7 @@ const ProductListing = () => {
                   setSearchTerm("")
                   setSelectedCategory("")
                   setPriceRange([0, 10000])
-                  
+
                   // Clear search by navigating to the base URL
                   const searchParams = new URLSearchParams(location.search)
                   searchParams.delete("search")
@@ -253,7 +252,7 @@ const ProductListing = () => {
                             <img
                               src={product.imageUrl || "/placeholder.svg?height=192&width=100%"}
                               alt={product.name}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                             />
                           </div>
                         </Link>
@@ -348,7 +347,7 @@ const ProductListing = () => {
                               <img
                                 src={product.imageUrl || "/placeholder.svg?height=192&width=100%"}
                                 alt={product.name}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                               />
                             </div>
                           </Link>
@@ -383,7 +382,7 @@ const ProductListing = () => {
                                 <img
                                   src={product.imageUrl || "/placeholder.svg?height=192&width=100%"}
                                   alt={product.name}
-                                  className="w-full h-full object-cover"
+                                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                                 />
                               </div>
                             </Link>
@@ -428,5 +427,7 @@ const ProductListing = () => {
 }
 
 export default ProductListing
+
+
 
 

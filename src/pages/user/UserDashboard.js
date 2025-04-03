@@ -96,8 +96,8 @@ const UserDashboard = () => {
   }
 
   return (
-    // <div className="min-h-screen bg-white">
-    <div className="bg-gradient-to-r from-purple-50 to-gray-100 shadow-md">
+    <div className="min-h-screen bg-gray-100">
+    {/* // <div className="bg-gradient-to-r from-purple-50 to-gray-100 shadow-md"> */}
       <main className="container mx-auto px-4 py-8">
         {/* Categories Section */}
         <section className="mb-10">
@@ -166,3 +166,177 @@ const UserDashboard = () => {
 };
 
 export default UserDashboard;
+
+
+
+
+// "use client"
+
+// import { useState, useEffect } from "react"
+
+// const BannerCarousel = () => {
+//   const [currentBanner, setCurrentBanner] = useState(0)
+//   const banners = [
+//     {
+//       id: 1,
+//       image:
+//         "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=400&q=80",
+//       title: "BIG SALE",
+//       description: "Up to 75% off on selected items",
+//       buttonText: "Shop Now",
+//     },
+//     {
+//       id: 2,
+//       image:
+//         "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80",
+//       title: "NEW ARRIVALS",
+//       description: "Check out our latest collection",
+//       buttonText: "Explore Now",
+//     },
+//     {
+//       id: 3,
+//       image:
+//         "https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80",
+//       title: "SUMMER COLLECTION",
+//       description: "Beat the heat with our summer essentials",
+//       buttonText: "View Collection",
+//     },
+//     {
+//       id: 4,
+//       image:
+//         "https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80",
+//       title: "EXCLUSIVE DEALS",
+//       description: "Limited time offers on premium products",
+//       buttonText: "Shop Deals",
+//     },
+//     {
+//       id: 5,
+//       image:
+//         "https://media.istockphoto.com/id/1181604824/photo/beautiful-girl-excited-after-successful-online-shopping.webp?a=1&b=1&s=612x612&w=0&k=20&c=NCCYC8wsJSeMJ_thNr8tmvrz6gJeO36KmrIIr8CCWEU=",
+//       title: "CLEARANCE SALE",
+//       description: "Last chance to grab your favorites",
+//       buttonText: "Shop Sale",
+//     },
+//     {
+//       id: 6,
+//       image:
+//         "https://images.unsplash.com/photo-1607083206599-4e0c6af85078?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80",
+//       title: "PREMIUM COLLECTION",
+//       description: "Luxury items at affordable prices",
+//       buttonText: "Discover More",
+//     },
+//   ]
+
+//   // Auto-slide functionality
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrentBanner((prev) => (prev === banners.length - 1 ? 0 : prev + 1))
+//     }, 5000) // Change slide every 5 seconds
+
+//     return () => clearInterval(interval)
+//   }, [banners.length])
+
+//   const goToPrevious = () => {
+//     setCurrentBanner((prev) => (prev === 0 ? banners.length - 1 : prev - 1))
+//   }
+
+//   const goToNext = () => {
+//     setCurrentBanner((prev) => (prev === banners.length - 1 ? 0 : prev + 1))
+//   }
+
+//   return (
+//     <div className="relative overflow-hidden rounded-lg h-[300px]">
+//       {/* Banner Images */}
+//       <div
+//         className="flex transition-transform duration-500 ease-in-out h-full"
+//         style={{ transform: `translateX(-${currentBanner * 100}%)` }}
+//       >
+//         {banners.map((banner) => (
+//           <div key={banner.id} className="min-w-full h-full flex-shrink-0 relative">
+//             <img src={banner.image || "/placeholder.svg"} alt={banner.title} className="w-full h-full object-cover" />
+//             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/50 to-pink-500/50">
+//               <div className="h-full flex flex-col justify-center px-8">
+//                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{banner.title}</h2>
+//                 <p className="text-xl md:text-2xl text-white mb-6">{banner.description}</p>
+//                 <button className="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold w-fit hover:bg-purple-50 transition-colors">
+//                   {banner.buttonText}
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+
+//       {/* Navigation Arrows */}
+//       <button
+//         onClick={goToPrevious}
+//         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white rounded-full p-2 backdrop-blur-sm transition-all"
+//         aria-label="Previous banner"
+//       >
+//         <svg
+//           xmlns="http://www.w3.org/2000/svg"
+//           className="h-6 w-6"
+//           fill="none"
+//           viewBox="0 0 24 24"
+//           stroke="currentColor"
+//         >
+//           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+//         </svg>
+//       </button>
+
+//       <button
+//         onClick={goToNext}
+//         className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white rounded-full p-2 backdrop-blur-sm transition-all"
+//         aria-label="Next banner"
+//       >
+//         <svg
+//           xmlns="http://www.w3.org/2000/svg"
+//           className="h-6 w-6"
+//           fill="none"
+//           viewBox="0 0 24 24"
+//           stroke="currentColor"
+//         >
+//           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+//         </svg>
+//       </button>
+
+//       {/* Dots Indicator */}
+//       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+//         {banners.map((_, index) => (
+//           <button
+//             key={index}
+//             onClick={() => setCurrentBanner(index)}
+//             className={`w-2 h-2 rounded-full transition-all ${
+//               currentBanner === index ? "bg-white w-4" : "bg-white/50"
+//             }`}
+//             aria-label={`Go to slide ${index + 1}`}
+//           />
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+// const UserDashboard = ({ hideBanner }) => {
+//   return (
+//     <div>
+//       {/* Banner Section: Hide if a search is active */}
+//       {!hideBanner && (
+//         <section className="mb-10">
+//           <BannerCarousel />
+//         </section>
+//       )}
+//       {/* Rest of the dashboard content */}
+//       <h1>User Dashboard</h1>
+//       <p>Welcome to your dashboard!</p>
+//     </div>
+//   )
+// }
+
+// export default UserDashboard
+
+
+
+
+
+
