@@ -315,6 +315,7 @@ import { collection, getDocs, query, orderBy, limit, getCountFromServer } from "
 import { db } from "../../firebase/config"
 import { useAuth } from "../../contexts/AuthContext"
 import { Package, Users, ShoppingBag, Tag, BarChart2, LogOut, Plus, Settings } from "lucide-react"
+import Footer from "../../components/common/Footer"
 
 const AdminDashboard = () => {
   const { currentUser, logout } = useAuth()
@@ -380,6 +381,7 @@ const AdminDashboard = () => {
   }
 
   return (
+    <div>
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}
       <aside className="w-64 bg-gray-300 shadow-md hidden md:block">
@@ -547,9 +549,9 @@ const AdminDashboard = () => {
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Total
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Actions
-                      </th>
+                      </th> */}
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -580,11 +582,11 @@ const AdminDashboard = () => {
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">₹{order.total}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                           <Link to={`/admin/orders/${order.id}`} className="text-purple-600 hover:text-purple-900">
                             View
                           </Link>
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                   </tbody>
@@ -597,8 +599,11 @@ const AdminDashboard = () => {
             )}
           </div>
         </main>
+        
       </div>
+    
     </div>
+    <Footer /></div>
   )
 }
 

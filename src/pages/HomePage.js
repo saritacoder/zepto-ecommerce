@@ -11,13 +11,13 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-500">
-      <header className="bg-white shadow-sm">
+      {/* <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
-            {/* <h1 className="text-2xl font-bold text-purple-600">QuickMart</h1> */}
+           
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">

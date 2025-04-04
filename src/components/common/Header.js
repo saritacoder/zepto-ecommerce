@@ -1,5 +1,4 @@
 
-
 "use client"
 
 import { Link, useNavigate, useLocation } from "react-router-dom"
@@ -15,7 +14,7 @@ const Header = ({ handleLogout }) => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // Handle search input change
+ 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value)
   }
@@ -54,6 +53,11 @@ const Header = ({ handleLogout }) => {
 
     navigate("/user/login") // Redirect to user login page
   }
+
+  // Do not render header on homepage
+  // if (location.pathname === "/") {
+  //   return null;
+  // }
 
   return (
     // <header className=" bg-white shadow-md" >
