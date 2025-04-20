@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
@@ -14,18 +14,18 @@ const AdminSignUp = () => {
   const passwordConfirmRef = useRef()
   const adminCodeRef = useRef()
   const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)   
   const navigate = useNavigate()
   const { setCurrentUser } = useAuth()
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault()  
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match")
+      return setError("Passwords do not match") 
     }
 
-    // In a real app, you would verify the admin code with your backend
+
     if (adminCodeRef.current.value !== "admin123") {
       return setError("Invalid admin code")
     }
@@ -40,7 +40,7 @@ const AdminSignUp = () => {
         passwordRef.current.value,
       )
 
-      // Create admin document in Firestore
+    
       await setDoc(doc(db, "admins", userCredential.user.uid), {
         name: nameRef.current.value,
         email: emailRef.current.value,
@@ -55,7 +55,7 @@ const AdminSignUp = () => {
         role: "admin",
       })
 
-      // navigate("/admin")
+     
       navigate("/admin/login")
     } catch (error) {
       setError("Failed to create an account. " + error.message)

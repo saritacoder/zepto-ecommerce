@@ -1,5 +1,5 @@
 
-"use client"
+
 
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { User } from "lucide-react"
@@ -32,7 +32,7 @@ const Header = ({ handleLogout }) => {
         searchParams.delete("search")
       }
 
-      // Update the URL with the search parameter
+    
       const newUrl = `${location.pathname}?${searchParams.toString()}`
       navigate(newUrl, { replace: true })
     }
@@ -48,10 +48,10 @@ const Header = ({ handleLogout }) => {
     setIsDropdownOpen(false)
 
     if (typeof handleLogout === "function") {
-      handleLogout() // Clear authentication state
+      handleLogout() 
     }
 
-    navigate("/user/login") // Redirect to user login page
+    navigate("/user/login")
   }
 
   // Do not render header on homepage

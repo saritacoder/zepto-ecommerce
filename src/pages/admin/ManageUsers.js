@@ -1,6 +1,4 @@
 
-
-
 import { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase/config';
@@ -24,7 +22,8 @@ const ManageUsers = () => {
         setUsers(usersData);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error(
+          error);
         setLoading(false);
       }
     };

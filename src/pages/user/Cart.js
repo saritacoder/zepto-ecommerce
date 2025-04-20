@@ -25,10 +25,10 @@ const Cart = () => {
   };
 
   const handleApplyCoupon = () => {
-    // In a real app, you would validate the coupon code with your backend
+    
     if (couponCode.toLowerCase() === 'discount10') {
       setCouponApplied(true);
-      setCouponDiscount(getCartTotal() * 0.1); // 10% discount
+      setCouponDiscount(getCartTotal() * 0.1);
     } else {
       setCouponApplied(false);
       setCouponDiscount(0);
@@ -190,7 +190,7 @@ const Cart = () => {
                   </div>
                 </div>
                 
-                <div className="mb-4">
+                {/* <div className="mb-4">
                   <label htmlFor="coupon" className="block text-sm font-medium text-gray-700 mb-1">
                     Coupon Code
                   </label>
@@ -213,7 +213,7 @@ const Cart = () => {
                   {couponApplied && (
                     <p className="text-green-600 text-sm mt-1">Coupon applied successfully!</p>
                   )}
-                </div>
+                </div> */}
                 
                 <button
                   onClick={() => navigate('/checkout')}

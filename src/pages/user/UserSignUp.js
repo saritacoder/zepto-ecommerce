@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
@@ -35,7 +35,7 @@ const UserSignUp = () => {
         passwordRef.current.value,
       )
 
-      // Create user document in Firestore
+     
       await setDoc(doc(db, "users", userCredential.user.uid), {
         name: nameRef.current.value,
         email: emailRef.current.value,
@@ -53,7 +53,7 @@ const UserSignUp = () => {
 
       navigate("/user/login")
     } catch (error) {
-      setError("Failed to create an account. " + error.message)
+      setError(error.message)
       console.error(error)
     } finally {
       setLoading(false)

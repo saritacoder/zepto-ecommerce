@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
@@ -21,7 +21,7 @@ const UserLogin = () => {
       setError("");
       setLoading(true);
   
-      // Ensure persistence before signing in
+   
       await setPersistence(auth, browserLocalPersistence);
   
       const userCredential = await signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);

@@ -38,8 +38,7 @@ const ProductDetails = () => {
         };
         
         setProduct(productData);
-        
-        // Fetch category
+   
         if (productData.categoryId) {
           const categoryDoc = await getDoc(doc(db, 'categories', productData.categoryId));
           
@@ -50,7 +49,7 @@ const ProductDetails = () => {
             });
           }
           
-          // Fetch related products
+        
           const relatedQuery = query(
             collection(db, 'products'),
             where('categoryId', '==', productData.categoryId),

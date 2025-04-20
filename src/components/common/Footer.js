@@ -154,3 +154,6 @@ import { FiHome, FiShoppingBag, FiUser, FiMail, FiPhone, FiMapPin } from "react-
 }
 
 export default Footer
+
+
+

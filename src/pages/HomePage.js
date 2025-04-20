@@ -1,6 +1,6 @@
 
 
-"use client"
+
 
 import { useRef } from "react"
 import { Link } from "react-router-dom"
@@ -29,7 +29,7 @@ const HomePage = () => {
 
         <div ref={containerRef} className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
           
-          {/* === ADMIN UI (Login & SignUp) === */}
+       
           <div className="flex-1 bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105">
             <div className="p-8 flex flex-col items-center text-center">
               <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mb-6">
@@ -40,14 +40,14 @@ const HomePage = () => {
                 Manage products, categories, and orders. Keep track of your store's performance.
               </p>
               <div className="flex gap-4">
-                {/* === Admin Login Button === */}
+                
                 <Link
                   to="/admin/login"
                   className="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
                 >
                   Login
                 </Link>
-                {/* === Admin SignUp Button === */}
+             
                 <Link
                   to="/admin/signup"
                   className="px-6 py-3 border border-purple-600 text-purple-600 rounded-lg font-medium hover:bg-purple-50 transition-colors"
@@ -58,7 +58,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* === USER UI (Login & SignUp) === */}
+        
           <div className="flex-1 bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105">
             <div className="p-8 flex flex-col items-center text-center">
               <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
@@ -69,14 +69,14 @@ const HomePage = () => {
                 Browse products, add to cart, and place orders with just a few clicks.
               </p>
               <div className="flex gap-4">
-                {/* === User Login Button === */}
+               
                 <Link
                   to="/user/login"
                   className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
                 >
                   Login
                 </Link>
-                {/* === User SignUp Button === */}
+               
                 <Link
                   to="/user/signup"
                   className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-colors"

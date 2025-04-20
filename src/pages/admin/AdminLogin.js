@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
@@ -24,7 +24,7 @@ const AdminLogin = () => {
 
       const userCredential = await signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
 
-      // Check if user is an admin
+     
       const userDoc = await getDoc(doc(db, "admins", userCredential.user.uid))
 
       if (!userDoc.exists()) {

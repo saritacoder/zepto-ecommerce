@@ -1,4 +1,4 @@
-"use client"
+
 import { Link, useLocation } from "react-router-dom"
 import { FiHome, FiPackage, FiGrid, FiShoppingBag, FiLogOut, FiSettings } from "react-icons/fi"
 import { signOut } from "firebase/auth"
@@ -14,7 +14,7 @@ export default function Sidebar() {
   const handleLogout = async () => {
     try {
       await signOut(auth)
-      // Redirect is handled by the AuthContext
+    
     } catch (error) {
       console.error("Error signing out:", error)
     }
