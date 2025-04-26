@@ -10,7 +10,6 @@ const Layout = ({ children }) => {
  
       <Header />
 
-      {/* Main Content */}
       <main className="flex-grow container mx-auto px-4 py-6">{children}</main>
 
    

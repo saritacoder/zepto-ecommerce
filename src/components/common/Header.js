@@ -19,11 +19,11 @@ const Header = ({ handleLogout }) => {
     setSearchQuery(e.target.value)
   }
 
-  // Apply search when input changes
+
   useEffect(() => {
-    // Only apply search if we're on the products page
+
     if (location.pathname.includes("/user")) {
-      // Create or update the search parameter
+  
       const searchParams = new URLSearchParams(location.search)
 
       if (searchQuery) {
@@ -67,13 +67,13 @@ const Header = ({ handleLogout }) => {
         
         
         <Link to="/" className="flex items-center">
-          {/* <img src={img || "/placeholder.svg"} alt="Logo" className="h-8 mr-2" /> */}
+          
           <span className="font-bold text-xl text-blue-600">QuickMart</span>
         </Link>
 
         {/* Icons and Search Container */}
         <div className="flex items-center space-x-4">
-          {/* Search Bar placed just before the Cart Icon */}
+         
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg

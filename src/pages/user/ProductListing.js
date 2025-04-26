@@ -208,7 +208,7 @@ const ProductListing = () => {
                     </div>
                     <button
                       onClick={() => {
-                        // Clear search by navigating to the base URL
+                     
                         const searchParams = new URLSearchParams(location.search)
                         searchParams.delete("search")
                         const newUrl = `${location.pathname}?${searchParams.toString()}`
